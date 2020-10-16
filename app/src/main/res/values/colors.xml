@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0671B0</color>
+    <color name="colorPrimaryDark">#0671B0</color>
+    <color name="colorAccent">#0671B0</color>
+    <color name="white">#ffff</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_80">#37474F</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="login_primary">#0671B0</color>
+    <color name="login_secondary">#0671B0</color>
+    <color name="FAB_backgroundcolor">#FFFFDD00</color>
+    <color name="grey">#686666</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+</resources>

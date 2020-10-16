@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">8ResQ</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_logout">Logout</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="requests_list">History</string>
+    <string name="requests_new">New Request</string>
+
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="settings_profile_title">Profile</string>
+    <string name="settings_display_title">Display</string>
+
+    <!-- Sync Preferences -->
+    <string name="settings_your_name_header">Your Display Name</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_login_activity">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!--Request Button Strings -->
+    <string name="request_add">Place your Request.</string>
+    <string name="request_view">Edit Request</string>
+    <string name="request_update">Update Request</string>
+    <string name="title_activity_splash">8ResQ</string>
+    <string name="question1">Question1</string>
+    <string name="question2">Question2</string>
+    <string name="question3">Question3</string>
+    <string name="no_covid">Sounds like you are feeling ok. Stay Safe!</string>
+    <string name="need_test">Visit the nearest center and get tested</string>
+</resources>
