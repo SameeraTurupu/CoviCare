@@ -1,4 +1,4 @@
-# 8ResQ
+# HackGT 2020
 An android application targeted for personal care and hospital management during COVID.
 
 Technology Stack:
