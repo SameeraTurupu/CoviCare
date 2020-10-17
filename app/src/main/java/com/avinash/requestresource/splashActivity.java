@@ -204,11 +204,12 @@ public class splashActivity extends AppCompatActivity {
                     // After 5 seconds redirect to another intent
                     SharedPreferences pref = getApplicationContext().getSharedPreferences("8ResQ",0);
                     SharedPreferences.Editor editor = pref.edit();
+//                    editor.putBoolean("isActive", false);
                     editor.putInt("count", 0);
                     editor.apply();
 
                     pref.getInt("count",0);
-                    if(pref.getBoolean("isActive",true) == false){
+                    if(pref.getBoolean("isActive",false) == false){
 //                        Toast.makeText(getApplicationContext(), "returned false", Toast.LENGTH_LONG).show();
                         navigateTOQuestionActivity();
                     }else{

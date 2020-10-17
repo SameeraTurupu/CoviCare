@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/HackGT2020.iml" filepath="$PROJECT_DIR$/.idea/HackGT2020.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Request_Resource.iml" filepath="$PROJECT_DIR$/.idea/modules/Request_Resource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Request_Resource.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Request_Resource.app.iml" />
     </modules>
   </component>
 </project>

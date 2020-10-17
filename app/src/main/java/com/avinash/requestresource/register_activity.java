@@ -91,6 +91,8 @@ public class register_activity extends AppCompatActivity {
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
+                Intent intent= new Intent(getApplicationContext(), login_activity.class);
+                startActivity(intent);
                 finish();
             }
         });
