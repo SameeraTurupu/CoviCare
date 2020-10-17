@@ -208,7 +208,7 @@ public class splashActivity extends AppCompatActivity {
                     editor.apply();
 
                     pref.getInt("count",0);
-                    if(pref.getBoolean("isActive",true) == false){
+                    if(pref.getBoolean("isActive",false) == false){
 //                        Toast.makeText(getApplicationContext(), "returned false", Toast.LENGTH_LONG).show();
                         navigateTOQuestionActivity();
                     }else{
