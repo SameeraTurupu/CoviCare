@@ -70,6 +70,10 @@ public class question_four extends AppCompatActivity{
 
             if (resultCode == RESULT_OK) {
                 Uri targetUri = data.getData();
+            }
+            else {
+                textTargetUri.setText("couldn't upload!");
+
 //                textTargetUri.setText(targetUri.toString());
 
 
@@ -150,6 +154,7 @@ public class question_four extends AppCompatActivity{
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             }
         }
 

@@ -15,6 +15,7 @@
 
     <string name="requests_list">History</string>
     <string name="requests_new">New Request</string>
+    <string name="socialDistance">Camera Shield</string>
 
 
     <!-- Preference Titles -->
@@ -45,4 +46,10 @@
     <string name="question3">Question3</string>
     <string name="no_covid">Sounds like you are feeling ok. Stay Safe!</string>
     <string name="need_test">Visit the nearest center and get tested</string>
+    <string name="before_you_proceed_with_the_requests_reserved_you_bed_in_the_nearby_hospital">Before you proceed with the requests reserved you bed in the nearby hospital</string>
+    <string name="confirm_bed">Confirm Hospital</string>
+    <string name="bed_icon">Bed Icon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="camera_shield">Camera Shield</string>
 </resources>
