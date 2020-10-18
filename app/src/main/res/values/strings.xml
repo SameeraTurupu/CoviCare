@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">8ResQ</string>
+    <string name="app_name">CoviCare</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -40,7 +40,7 @@
     <string name="request_add">Place your Request.</string>
     <string name="request_view">Edit Request</string>
     <string name="request_update">Update Request</string>
-    <string name="title_activity_splash">8ResQ</string>
+    <string name="title_activity_splash">CoviCare</string>
     <string name="question1">Question1</string>
     <string name="question2">Question2</string>
     <string name="question3">Question3</string>
