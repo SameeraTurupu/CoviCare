@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_shield:
                 Intent settingsActivityIntent = new Intent(this, SettingsActivity.class);
                 startActivity(settingsActivityIntent);
             default:

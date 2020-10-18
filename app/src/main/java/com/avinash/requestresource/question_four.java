@@ -43,6 +43,8 @@ public class question_four extends AppCompatActivity{
             if (resultCode == RESULT_OK){
                 Uri targetUri = data.getData();
                 textTargetUri.setText(targetUri.toString());
+                Intent bed = new Intent(this, bed_selection.class);
+                startActivity(bed);
             }
             else {
                 textTargetUri.setText("couldn't upload!");
