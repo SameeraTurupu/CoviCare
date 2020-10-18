@@ -19,10 +19,10 @@
     <ImageView
         android:id="@+id/fullscreenContent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="230dp"
         android:layout_marginTop="150dp"
         android:foregroundGravity="center"
-        app:srcCompat="@drawable/logo_without_background" />
+        app:srcCompat="@drawable/appicon" />
 
     <TextView
         android:id="@+id/textView17"
