@@ -45,7 +45,7 @@ public class question_four extends AppCompatActivity{
         setContentView(R.layout.activity_question_4);
         Button buttonLoadImage = (Button)findViewById(R.id.uploadxray);
         textTargetUri = (TextView)findViewById(R.id.xrayresults);
-        textTargetUri.setText("Processing...");
+        textTargetUri.setText("");
         ConstraintLayout fl = (ConstraintLayout) findViewById(R.id.question_four);
 
 
@@ -95,6 +95,8 @@ public class question_four extends AppCompatActivity{
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
+            TextView textView = (TextView) findViewById(R.id.xrayresults);
+            textView.setText("Processing....");
             Uri targetUri = data.getData();
             String filePath = getPath(targetUri);
             SharedPreferences sharedPreferences = getSharedPreferences("8ResQ",0);
