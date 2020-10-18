@@ -14,7 +14,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_without_background"
-        android:label="Request Resource"
+        android:label="CoviCare"
         android:roundIcon="@drawable/logo_without_background"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
