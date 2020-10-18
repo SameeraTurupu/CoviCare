@@ -82,7 +82,7 @@ public class question_three extends AppCompatActivity {
         reserveBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerActivity = new Intent(getApplicationContext(), register_activity.class);
+                Intent registerActivity = new Intent(getApplicationContext(), bed_selection.class);
                 startActivity(registerActivity);
             }
         });

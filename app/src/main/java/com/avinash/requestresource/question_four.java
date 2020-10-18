@@ -45,7 +45,7 @@ public class question_four extends AppCompatActivity{
         setContentView(R.layout.activity_question_4);
         Button buttonLoadImage = (Button)findViewById(R.id.uploadxray);
         textTargetUri = (TextView)findViewById(R.id.xrayresults);
-        textTargetUri.setText("");
+        textTargetUri.setText("Processing...");
         ConstraintLayout fl = (ConstraintLayout) findViewById(R.id.question_four);
 
 
