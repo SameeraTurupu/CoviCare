@@ -1,12 +1,16 @@
 package com.avinash.requestresource;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -41,6 +45,7 @@ public class question_four extends AppCompatActivity{
         setContentView(R.layout.activity_question_4);
         Button buttonLoadImage = (Button)findViewById(R.id.uploadxray);
         textTargetUri = (TextView)findViewById(R.id.xrayresults);
+        textTargetUri.setText("");
         ConstraintLayout fl = (ConstraintLayout) findViewById(R.id.question_four);
 
 
@@ -53,6 +58,33 @@ public class question_four extends AppCompatActivity{
                 startActivityForResult(intent, 0);
             }});
 
+        fl.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                //left swipe
+                moveToQuestion3();
+                hideSoftKeyboard();
+            }
+
+            @Override
+            public void onSwipeRight() {
+                //right swipe
+                super.onSwipeRight();
+                hideSoftKeyboard();
+            }
+        });
+
+    }
+
+    private void moveToQuestion3() {
+        Intent intent = new Intent(this, question_three.class);
+        startActivity(intent);
+        finish();
+    }
+
+    protected void hideSoftKeyboard() {
+        ((InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE))
+                .toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
     }
 
 
@@ -110,20 +142,33 @@ public class question_four extends AppCompatActivity{
                                     String tag = predictionValue.getString("tagName");
                                     if(tag.equals("negative") && probability-0.400000 > 0.000000){
                                         editor.putBoolean("isCovidActive",false);
-                                        TextView t  = (TextView) findViewById(R.id.xrayresults);
-                                        textTargetUri.setText("Your X-ray seems to be fine.");
+
+                                        new Handler(Looper.getMainLooper()).post(new Runnable(){
+                                            @Override
+                                            public void run() {
+                                                TextView t  = (TextView) findViewById(R.id.xrayresults);
+                                                textTargetUri.setText("Our analysis predicts that you are safe. Check back later.");
+                                            }
+                                        });
+
 //                                            textTargetUri.setText("Your X-ray seem to be fine.");
                                     }else{
 //                                            textTargetUri.setText("Please swipe to continue to next step.");
-                                        TextView t  = (TextView) findViewById(R.id.xrayresults);
-                                        textTargetUri.setText("Your X-ray seems to be not fine. swipe left to continue");
+                                        new Handler(Looper.getMainLooper()).post(new Runnable(){
+                                            @Override
+                                            public void run() {
+                                                TextView t  = (TextView) findViewById(R.id.xrayresults);
+                                                textTargetUri.setText("Based on our analysis you seem to be symptomatic to COVID. For further assistance swipe left to continue");
+                                            }
+                                        });
+
                                         editor.putBoolean("isCovidActive",true);
                                     }
                                     editor.apply();
 //                                    Intent intent = new Intent(getApplicationContext(), popup_activity.class);
 //                                    startActivity(intent);
 
-                                    finish();
+//                                    finish();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
