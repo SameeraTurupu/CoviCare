@@ -24,7 +24,7 @@ public class question_two extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 editor.putInt("count", pref.getInt("count",0) + 1);
                 editor.apply();
-                Intent QuestionActivity = new Intent(getApplicationContext(), bed_selection.class);
+                Intent QuestionActivity = new Intent(getApplicationContext(), question_four.class);
                 startActivity(QuestionActivity);
             }
         });
@@ -32,7 +32,7 @@ public class question_two extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Intent QuestionActivity = new Intent(getApplicationContext(), bed_selection.class);
+                Intent QuestionActivity = new Intent(getApplicationContext(), question_four.class);
                 startActivity(QuestionActivity);
             }
         });
