@@ -1,4 +1,4 @@
-# HackGT 2020
+# CoviCare
 An android application targeted for personal care and hospital management during COVID.
 
 Technology Stack:
