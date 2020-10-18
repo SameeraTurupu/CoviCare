@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -16,16 +17,22 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.ResultReceiver;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -74,17 +81,17 @@ public class bed_selection extends AppCompatActivity {
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             try {
                 String county = hereLocation(location.getLatitude(), location.getLongitude());
-                currentAddTv.setText(("Reserved your bed at a nearby hospital in " + county));
-                SharedPreferences pref = getApplicationContext().getSharedPreferences("8ResQ",0);
+                currentAddTv.setText(("Reserve your bed at a nearby hospital in " + county));
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("8ResQ", 0);
                 SharedPreferences.Editor editor = pref.edit();
                 String reqCounty = new StringTokenizer(county).nextToken().toLowerCase();
-                editor.putString("location",reqCounty);
+                editor.putString("location", reqCounty);
                 editor.apply();
                 OkHttpClient client = new OkHttpClient();
                 client.setConnectTimeout(30, TimeUnit.SECONDS); // connect timeout
                 client.setReadTimeout(30, TimeUnit.SECONDS);
-                String url= "https://8resqservices.azurewebsites.net/hospital/getHospitals";
-                String postBody="{" + "\"county\": " + "\"" + pref.getString("location","fulton")  + "\"}";
+                String url = "https://8resqservices.azurewebsites.net/hospital/getHospitals";
+                String postBody = "{" + "\"county\": " + "\"" + pref.getString("location", "fulton") + "\"}";
                 RequestBody body = RequestBody.create(JSON, postBody);
                 Request request = new Request.Builder().url(url).post(body).build();
                 client.newCall(request).enqueue(new Callback() {
@@ -97,24 +104,42 @@ public class bed_selection extends AppCompatActivity {
                     @Override
                     public void onResponse(Response response) throws IOException {
                         try {
-                            ArrayList<Requests> requests = new ArrayList<Requests>();
                             JSONArray json = new JSONArray(response.body().string());
-                            RadioGroup rg = (RadioGroup) findViewById(R.id.beds);
-                            rg.setOrientation(LinearLayout.VERTICAL);
-                            for(int index= 0; index < json.length(); index++){
+                            ArrayList<String> arrayList = new ArrayList<>();
+                            for (int index = 0; index < json.length(); index++) {
                                 JSONObject jsonobj = json.getJSONObject(index);
-                                RadioButton rdbtn = new RadioButton(getApplicationContext());
-                                rdbtn.setId(View.generateViewId());
-                                rdbtn.setText((String) jsonobj.getString("hospitalName") + " Hospital " + "Cost: " + (String) jsonobj.getString("cost"));
-                                rdbtn.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-
-                                    }
-                                });
-                                rg.addView(rdbtn);
+//                                arraySpinner[index] = (String) jsonobj.getString("hospitalName") + " Hospital " + "Cost: " + (String) jsonobj.getString("cost");
+                                arrayList.add((String) jsonobj.getString("hospitalName") + " Hospital " + "Cost: " + (String) jsonobj.getString("cost"));
                             }
+                            final Spinner bed_space = (Spinner) findViewById(R.id.hospitalSpinner);
+                            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(bed_selection.this, android.R.layout.simple_spinner_item, arrayList);
+                            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            new Handler(Looper.getMainLooper()).post(new Runnable(){
+                                @Override
+                                public void run() {
+                                    bed_space.setAdapter(arrayAdapter);
+                                }
+                            });
+
+                            bed_space.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    String tutorialsName = parent.getItemAtPosition(position).toString();
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+                                }
+                            });
                             spinner.setVisibility(View.INVISIBLE);
+                            Button confirmReservation = (Button) findViewById(R.id.confirmReservation);
+                            confirmReservation.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent QuestionAcitivity = new Intent(getApplicationContext(), login_activity.class);
+                                    startActivity(QuestionAcitivity);
+                                }
+                            });
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -126,7 +151,6 @@ public class bed_selection extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(bed_selection.this, "Not Found!", Toast.LENGTH_SHORT).show();
             }
-
         }
 
     }
@@ -137,6 +161,16 @@ public class bed_selection extends AppCompatActivity {
             case 1000: {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
                     Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     try {
                         String county = hereLocation(location.getLatitude(), location.getLongitude());

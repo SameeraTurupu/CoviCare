@@ -10,12 +10,17 @@
         android:id="@+id/selectBedText"
         android:layout_width="362dp"
         android:layout_height="232dp"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="37dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="29dp"
         android:fontFamily="@font/bevan"
         android:text="@string/before_you_proceed_with_the_requests_reserved_you_bed_in_the_nearby_hospital"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
@@ -53,21 +58,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.743"
+        app:layout_constraintVertical_bias="0.649"
         tools:ignore="MissingConstraints" />
 
     <Spinner
         android:id="@+id/hospitalSpinner"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
+        android:layout_marginStart="55dp"
         android:layout_marginTop="47dp"
         android:layout_marginEnd="69dp"
         android:layout_marginBottom="67dp"
         app:layout_constraintBottom_toTopOf="@+id/confirmReservation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/confirmReservation"
@@ -75,13 +82,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="77dp"
         android:layout_marginEnd="85dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="120dp"
         android:background="@color/colorPrimary"
         android:fontFamily="@font/bevan"
         android:text="@string/confirm_bed"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
