@@ -6,14 +6,14 @@ const { Connection, Request } = require("tedious");
 const config = {
   authentication: {
     options: {
-      userName: "tom", // update me
-      password: "Password@0" // update me
+      userName: "", // update me
+      password: "" // update me
     },
     type: "default"
   },
-  server: "8resq.database.windows.net", // update me
+  server: "", // update me
   options: {
-    database: "8ResQ", //update me
+    database: "", //update me
     encrypt: true
   }
 };
